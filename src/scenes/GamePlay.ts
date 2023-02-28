@@ -30,27 +30,17 @@ export default class GamePlay extends Phaser.Scene {
 
     //player
     this._playerGroup = this.add.group({runChildUpdate: true}); //runChildUpdate chiama la funzione update su ogni elemento del gruppo  
-    this._player =  new Player({scene: this, x: 250, y: 650, key: "player"}).setAlpha(0);
+    this._player =  new Player({scene: this, x: 0, y: 800, key: "player"}).setAlpha(0);
     this._playerGroup.add(this._player);
 
     //nemico
     this._enemyGroup = this.add.group({runChildUpdate: true}); //runChildUpdate chiama la funzione update su ogni elemento del gruppo  
     this._enemy =  new Enemy({scene: this, x: 750, y: 650, key: "enemy"}).setAlpha(0);
-    this._enemyGroup.add(this._player);
+    this._enemyGroup.add(this._enemy);
+    
 
     //spwan player
     this.show(this._player, 1500);
-
-    //spwan nemico
-    this._timer = this.time.addEvent({
-      delay: 2000,
-      callback: (item: any, duration: number) => {
-        this.show(this._enemy, 1000);
-      },
-      callbackScope: this,
-      args: [3, 20, 10], //passare argomenti alla funzione di callback
-      loop: true //la fa ripetere all'infinito
-    })
 
     this._countdown = this.time.addEvent({
       delay: 100000,
@@ -63,7 +53,7 @@ export default class GamePlay extends Phaser.Scene {
     this._text = this.add.text(150,150, "");
   }
 
-
+  
   show(item: any, duration: number){
     this.tweens.add({
       targets: item, 

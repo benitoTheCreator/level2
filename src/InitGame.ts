@@ -8,7 +8,6 @@ import GamePlay from "./scenes/GamePlay";
 import Prova from "./scenes/Prova";
 import Prova2 from "./scenes/Prova2";
 import { GameData } from "./GameData";
-import Livello3 from "./scenes/Livello3";
 
 window.addEventListener("load", () => {
 
@@ -30,15 +29,14 @@ window.addEventListener("load", () => {
       GamePlay,
       GameOver,
       Prova,
-      Prova2,
-      Livello3
+      Prova2
     ],
 
     physics: {
       default: "arcade",
       arcade: {
         debug: GameData.globals.debug,
-        gravity: {y: 300}
+
       }
     },
     input: {
